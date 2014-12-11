@@ -1,0 +1,14 @@
+Design 
+Chat server - Selection for channels and PMs 
+	Top - Chatrooms
+	Left - Channels
+	Right - Users/Rooms
+	
+Login Page (HTML or PHP) -> Login (PHP + SQL)
+	- Username + Passwords
+	- Username Key (if exists)
+	- Password Encrypted SHA3 (Encrypted saved/read)
+	
+Main Chatroom (HTML or PHP)
+	- Input Box + Submit button (Doubles as channel/Encryption?)
+	- Users/Rooms (PHP) - Very difficult...
