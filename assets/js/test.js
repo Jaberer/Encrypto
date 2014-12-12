@@ -1,1 +1,0 @@
-document.bgColor="#CCCCCC";
