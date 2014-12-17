@@ -1,5 +1,21 @@
-function formhash(form, password) 
+function formhash(form, username, password)  // sanitation for login
 {
+	if (username.value == '' 
+          || password.value == '') 
+    {
+        alert('You must provide all the requested details. Please try again');
+        return false;
+    }
+	
+	// Check the username
+    re = /^\w+$/; 
+    if(!re.test(form.username.value)) 
+	{ 
+        alert("Username must contain only letters, numbers and underscores. Please try again"); 
+        form.username.focus();
+        return false; 
+    }
+	
     // Create a new element input, this will be our hashed password field. 
     var p = document.createElement("input");
  
@@ -15,10 +31,10 @@ function formhash(form, password)
     // Finally submit the form. 
     form.submit();
 }
- 
-function regformhash(form, username, password, conf) 
+
+function regformhash(form, username, password, conf)  // sanitation for reg
 {
-	document.write("RegFormReceived!");
+	//document.write("RegFormReceived!");
      // Check each field has a value
     if (username.value == '' 
           || password.value == ''
@@ -29,7 +45,6 @@ function regformhash(form, username, password, conf)
     }
  
     // Check the username
- 
     re = /^\w+$/; 
     if(!re.test(form.username.value)) 
 	{ 

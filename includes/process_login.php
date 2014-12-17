@@ -4,6 +4,8 @@ include_once 'functions.php';
  
 sec_session_start(); // from functions - secures PHP session
  
+$relay_msg = ''; // message to relay to client
+ 
 if (isset($_POST['username'], $_POST['p'])) 
 {
     $username = $_POST['username'];
@@ -16,20 +18,22 @@ if (isset($_POST['username'], $_POST['p']))
 		if(login_check($conn)) // works
 		{
 			//echo "<p> Login Check Successful</p>";
-			header('Location: ../chat.php');
+			header('Location: chat.php');
 		}
 		//header('Location: ../protected_page_example.php');
     } 
 	else 
 	{
         // Login failed 
-        echo "<p>Failed Login</p>";
+        //echo "<p>Failed Login</p>";
+		$relay_msg = "<p>Failed Login</p>";
 		//header('Location: ../index.php?error=1'); 
     }
 } 
 else 
 {
     // The correct POST variables were not sent to this page. 
-    echo 'Invalid Request';
+    //echo 'Invalid Request';
+	//$relay_msg = "<p>The correct POST variables were not sent to this page.</p>";
 }
 ?>

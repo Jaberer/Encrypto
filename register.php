@@ -19,9 +19,9 @@ include_once 'includes/functions.php';
         <!-- Registration form to be output if the POST variables are not
         set or if the registration script caused an error. -->
         <?php // prints error message from register.inc.php
-			if (!empty($error_msg)) 
+			if (!empty($relay_msg)) 
 			{
-				echo $error_msg;
+				echo $relay_msg;
 			}
         ?>
         <section class="content">

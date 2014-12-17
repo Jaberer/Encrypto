@@ -12,7 +12,7 @@ function sec_session_start()
 	if (ini_set('session.use_only_cookies', 1) === FALSE) 
 	{
 		// exit: a secure session cannot be established
-		echo "<p> Login failed </p>";
+		//echo "<p> Login failed </p>";
 		exit();
 	}
 	// Gets current cookies params.
@@ -93,7 +93,7 @@ function login($username, $password, $mysqli)
 		else 
 		{
 			// No user exists.
-			echo "<p><br>User does not exist <p>";
+			//echo "<p><br>User does not exist <p>";
 			return false;
 		}
 	}

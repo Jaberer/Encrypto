@@ -3,7 +3,7 @@ include_once 'db_connect.php';
 include_once 'config.php';
 //include_once 'localconfig.php';
  
-$error_msg = "";
+$relay_msg = "";
  
 if (isset($_POST['username'], $_POST['p'])) 
 {
@@ -15,13 +15,13 @@ if (isset($_POST['username'], $_POST['p']))
 	{
         // The hashed pwd should be 128 characters long
         // If it's not, something really odd has happened
-        $error_msg .= '<p class="error">Invalid password configuration.</p>';
+        $relay_msg .= '<p class="error">Invalid password configuration.</p>';
 		//echo $password;
-		echo "<br> password not valid";
+		//echo "<br> password not valid";
     }
 	else
 	{
-		echo "<br> password valid";
+		//echo "<br> password valid";
 	}
  
     // Username validity and password validity have been checked client side
@@ -39,20 +39,21 @@ if (isset($_POST['username'], $_POST['p']))
 		if ($stmt->num_rows == 1) 
 		{
 				// A user with this username already exists
-				$error_msg .= '<p class="error">A user with this username already exists</p>';
+				$relay_msg .= '<p class="error">A user with this username already exists</p>';
 				$stmt->close();
 		}
 		else
 		{
+			$relay_msg .= '<p class="error">User Created!</p>';
 			$stmt->close();
-			echo "<br> username validated!";
+			//echo "<br> username validated!";
 		}
 	} 
 	else 
 	{
-			$error_msg .= '<p class="error">Database error in validating username </p>';
+			$relay_msg .= '<p class="error">Database error in validating username </p>';
 			$stmt->close();
-			echo "<br> username not validated!";
+			//echo "<br> username not validated!";
 	}
  
     // TODO: 
@@ -60,7 +61,7 @@ if (isset($_POST['username'], $_POST['p']))
     // rights to do registration, by checking what type of user is attempting to
     // perform the operation.
  
-    if (empty($error_msg)) 
+    if (empty($relay_msg)) 
 	{
         // Create a random salt
         //$random_salt = hash('sha512', uniqid(openssl_random_pseudo_bytes(16), TRUE)); // Did not work
@@ -90,16 +91,16 @@ if (isset($_POST['username'], $_POST['p']))
             if (! $insert_stmt->execute()) 
 			{
                 //header('Location: ../error.php?err=Registration failure: INSERT');
-				echo "<br> failed!";
+				//echo "<br> failed!";
             }
 			else
 			{
-				echo "<br> success!";
+				//echo "<br> success!";
 			}
         }
 		else 
 		{
-			echo "<br> failed!";	
+			//echo "<br> failed!";	
 		}
         //header('Location: ./register_success.php');
     }

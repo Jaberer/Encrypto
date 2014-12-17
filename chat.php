@@ -8,17 +8,7 @@ sec_session_start();
 <html>
   <head>
     <title>Encrypto.IO chat</title>
-    <style>
-		* { margin: 0; padding: 0; box-sizing: border-box; }
-		body { font: 20px "proxima-nova", Helvetica, Arial; }
-		form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
-		form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-		form button { width: 9%; background: rgb(150, 220, 220); border: none; padding: 10px; }
-		
-		#messages { list-style-type: none; margin-bottom: 40px; padding: 0; }
-		#messages li { padding: 5px 10px; }
-		#messages li:nth-child(odd) { background: #eee; }
-    </style>
+	<link rel="stylesheet" href="assets/css/chat.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script>
 		$(document).ready(function(){
@@ -31,10 +21,11 @@ sec_session_start();
 						//$('#input').value = "";
 						//alert(data);
 						//$("#messages").append(data);
-						//$("#messages").append("<li>" + $("#m").val() + "</li>");
+						//$("#messages").append("<li>" + $("#m").val() + "</li>"); // formatting is hard...
 					});
 				}
 				return false;
+				//window.scrollTo(0,document.body.scrollHeight);
 			});
 			
 			//$("#messages").animate({ scrollTop: $("#messages")[0].scrollHeight}, 1000);
@@ -46,12 +37,47 @@ sec_session_start();
 			setInterval(function(){
 				$("#messages").load('get_chats.php');
 				}, 50);
+			//$('#scrollbox).scrollTop($('#scrollbox')[0].scrollHeight);
+			/*
+			var d = $('#scrollbox');
+			d.scrollTop(d.prop("scrollHeight"));
+			*/
+			//window.scrollTo(0,document.body.scrollHeight);
+		});
+	</script>
+	<script>
+		$(document).ready(function(){
+			setInterval(function(){
+				//$("#scrollbox").scrollTop($("#scrollbox").scrollHeight);
+				/*
+				var lastMessage = $("#messages").children().length - 1;
+				var scrollToElement = $("#scrollbox").getElementsByTagName("li")[lastMessage];
+				var scrollTo = scrollToElement.offsetTop;
+				$("#scrollbox").scrollTop = scrollTo;
+				*/
+				//var lastMessage = $("#messages").children().length - 1;
+				//var ScrollDiv = $("#messages");
+				//var pos = $("#messages").find("li:last").position();
+				//$('#scrollbox').scrollTop(pos.top);
+				//ScrollDiv.find('li')[lastMessage].scrollIntoView(true);
+				//document.getElementByTagName("li")[lastMessage].scrollIntoView(true);
+				//var objDiv = document.getElementById("messages");
+				//document.scrollTop = document.scrollHeight; // doesn't work.... 
+				}, 50);
+			//$('#scrollbox).scrollTop($('#scrollbox')[0].scrollHeight);
+			/*
+			var d = $('#scrollbox');
+			d.scrollTop(d.prop("scrollHeight"));
+			*/
+			//window.scrollTo(0,document.body.scrollHeight);
 		});
 	</script>
   </head>
   <body>
 	<?php if (login_check($conn)) : ?>
-		<div id="messages"></div>
+		<div id="scrollbox">
+			<div id="messages"></div>
+		</div>
 		<form  id="input" maxlength="255" name="message_box">
 		  <input id="m" name="text" autocomplete="off" placeholder="get started!"/><button>Send</button>
 		</form>
