@@ -26,6 +26,7 @@ sec_session_start();
 				}
 				return false;
 				//window.scrollTo(0,document.body.scrollHeight);
+				$('#input').value = "";
 			});
 			
 			//$("#messages").animate({ scrollTop: $("#messages")[0].scrollHeight}, 1000);
@@ -36,33 +37,6 @@ sec_session_start();
 		$(document).ready(function(){
 			setInterval(function(){
 				$("#messages").load('get_chats.php');
-				}, 50);
-			//$('#scrollbox).scrollTop($('#scrollbox')[0].scrollHeight);
-			/*
-			var d = $('#scrollbox');
-			d.scrollTop(d.prop("scrollHeight"));
-			*/
-			//window.scrollTo(0,document.body.scrollHeight);
-		});
-	</script>
-	<script>
-		$(document).ready(function(){
-			setInterval(function(){
-				//$("#scrollbox").scrollTop($("#scrollbox").scrollHeight);
-				/*
-				var lastMessage = $("#messages").children().length - 1;
-				var scrollToElement = $("#scrollbox").getElementsByTagName("li")[lastMessage];
-				var scrollTo = scrollToElement.offsetTop;
-				$("#scrollbox").scrollTop = scrollTo;
-				*/
-				//var lastMessage = $("#messages").children().length - 1;
-				//var ScrollDiv = $("#messages");
-				//var pos = $("#messages").find("li:last").position();
-				//$('#scrollbox').scrollTop(pos.top);
-				//ScrollDiv.find('li')[lastMessage].scrollIntoView(true);
-				//document.getElementByTagName("li")[lastMessage].scrollIntoView(true);
-				//var objDiv = document.getElementById("messages");
-				//document.scrollTop = document.scrollHeight; // doesn't work.... 
 				}, 50);
 			//$('#scrollbox).scrollTop($('#scrollbox')[0].scrollHeight);
 			/*
