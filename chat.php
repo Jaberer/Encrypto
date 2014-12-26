@@ -15,18 +15,20 @@ sec_session_start();
 			$("#input").submit(function(){
 				//var toSend = $("#input").value;
 				//toSend = $("#input").value.trim(); // get rid of spaces
-				//if(toSend) // if it's not empty, send, if not, do nothing
-				{
-					$.post('process_chat.php', $("#input").serialize(), function(data) {
-						//$('#input').value = "";
-						//alert(data);
-						//$("#messages").append(data);
-						//$("#messages").append("<li>" + $("#m").val() + "</li>"); // formatting is hard...
-					});
-				}
-				return false;
+				//if(toSend) // if it's not empty, send, if not, do nothing				
+				$.post('process_chat.php', $("#input").serialize(), function(data) {
+					//$("#m").value = "";
+					//$('#input').value = "";
+					//alert(m.value);
+					m.value = ""; // works!
+					//alert(data);
+					//$("#messages").append(data);
+					//$("#messages").append("<li>" + $("#m").val() + "</li>"); // formatting is hard...
+				});
+				
 				//window.scrollTo(0,document.body.scrollHeight);
-				$('#input').value = "";
+				
+				return false;
 			});
 			
 			//$("#messages").animate({ scrollTop: $("#messages")[0].scrollHeight}, 1000);
@@ -60,6 +62,7 @@ sec_session_start();
 			//elem.value ="My default value";
 		</script>
 		<script src="encrypt.js"></script>
+		<script src="clearBox.js"></script>
 	 <?php else : ?>
             <p>
                 <span class="error">You are not authorized to access this page.</span> Please <a href="login4.php">login</a>.
